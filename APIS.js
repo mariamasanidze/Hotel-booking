@@ -90,7 +90,7 @@
 // 	console.error(error);
 // }
 
-const cities_API = 'https://booking-com.p.rapidapi.com/v1/hotels/nearby-cities?latitude=65.9667&locale=en-gb&longitude=-18.5333';
+
 
 
 const headers = {
@@ -176,20 +176,37 @@ const main = document.getElementById("main");
 
 
 
-const getCities = async (url) =>{
-    const result = await fetch (url);
+// const getCities = async (url) =>{
+//     const result = await fetch (url);
+//     console.log(result);
+//     const data = await result.json();
+//     console.log(data);
+// }
+// // getCities(cities_API);
+
+
+// function showCities (cities) {
+//     (main.innerHTML = " "),
+//     cities.forEach ((city) => {
+//        const {title, photo , description , rating } = city;
+//        console.log(rating);
+//     });
+// }
+
+const getCities = async (url) => {
+    const cities_API = 'https://booking-com.p.rapidapi.com/v1/hotels/nearby-cities?latitude=65.9667&locale=en-gb&longitude=-18.5333';
+    const result = await fetch(url);
     console.log(result);
     const data = await result.json();
-    console.log(data);
-}
-// getCities(cities_API);
+    showCities(data.results);
+};
+getCities(cities_API);
 
-
-function showCities (cities) {
+function showCities(cities) {
     (main.innerHTML = " "),
-    cities.forEach ((city) => {
-       const {title, photo , description , rating } = city;
-       console.log(rating);
+    cities.forEach ((citie) => {
+        const {descriptiontype_id, photo_id , tags } = city;
+        const cityEl = document.createElement("div");
+        cityEl.innerHTML =``;
     });
 }
-
