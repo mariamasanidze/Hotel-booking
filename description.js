@@ -1,3 +1,4 @@
+// truncateText('hotel-description', 100);
 const headers = {
     'x-rapidapi-key': 'de148a4c9cmsh62e9c162f1225bdp175ee8jsn5b84fc138145',
     'x-rapidapi-host': 'booking-com.p.rapidapi.com'
@@ -264,6 +265,7 @@ function getQueryParam(param) {
       // Display the formatted data on the page
       document.getElementById('hotel-description').innerHTML = formattedDescription;
       document.getElementById('hotel-image').src = photoUrl;
+    //   document.getElementById('hotel-address').src = address;
   
     } catch (error) {
       console.error('Error fetching hotel details:', error);
