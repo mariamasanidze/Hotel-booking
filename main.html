@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./style.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <!-- Include Flatpickr CSS and JS used it for check in and out -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
     <title>Hotel Booking</title>
 </head>
 <body class="bg-gray-100">
@@ -34,7 +39,7 @@
         <a href="#" class="text-xl hover:text-cyan-500 duration-500">Rooms</a>
       </li>
       <li class="mx-4 my-6 md:my-0">
-        <a href="#" class="text-xl hover:text-cyan-500 duration-500">About</a>
+        <a href="./about.html" class="text-xl hover:text-cyan-500 duration-500">About</a>
       </li>
       <li class="mx-4 my-6 md:my-0">
         <a href="#" class="text-xl hover:text-cyan-500 duration-500">Contact</a>
@@ -59,8 +64,9 @@
           memorable moments.
         </h2>
         <button class="bg-blue-800 hover:bg-blue-700 text-white font-bold w-40 h-10 rounded mx-auto lg:mx-0">
-          Show More 
+          <span class="text">Show More</span>
         </button>
+        
       </div> 
       <div class="w-full lg:w-1/2 flex justify-center lg:justify-end mt-6 lg:mt-0">
         <img src="./images/main.svg" alt="Main Image" class="max-w-full h-auto mt-20"/>
@@ -94,14 +100,13 @@
   <!-- Responsive Search Section -->
   <section class="py-4 mt-24">
     <div class="justify-around bg-blue-100 p-8 rounded-lg w-full flex flex-col sm:flex-row items-center gap-4 sm:gap-2 lg:gap-4 shadow-lg">
-      <!-- Check Availability Button -->
-      <button class="bg-white flex items-center px-4 py-2 rounded-lg shadow-md text-gray-700 font-medium hover:bg-gray-100 w-full sm:w-auto">
-        <ion-icon name="calendar-outline" class="mr-2 text-xl"></ion-icon>
-        Check Available
-      </button>
-
-      <!-- Number of People Selector -->
-      <div class="bg-white flex items-center px-4 py-2 rounded-lg shadow-md text-gray-700 font-medium hover:bg-gray-100 w-full sm:w-auto">
+      
+      <div class="relative w-full sm:w-auto">
+        <ion-icon name="calendar-outline" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-xl text-gray-700"></ion-icon>
+        <input id="date-range" type="text" placeholder="Check-In - Check-Out" class="bg-white pl-12 pr-4 py-2 rounded-lg shadow-md text-gray-700 font-medium hover:bg-gray-100 w-full sm:w-auto cursor-pointer appearance-none placeholder-gray-700" />
+      </div>
+       <!-- Number of People Selector -->
+    <div class="bg-white flex items-center px-4 py-2 rounded-lg shadow-md text-gray-700 font-medium hover:bg-gray-100 w-full sm:w-auto">
         <ion-icon name="person-outline" class="mr-2 text-xl"></ion-icon>
         Person
         <select id="personCount" class="ml-2 bg-transparent outline-none">
@@ -126,7 +131,19 @@
       </button>
     </div>
   </section>
+  
+  <div id="app" class="container mx-auto p-4">
+    <h1 class="text-2xl text-blue-900 font-bold mb-4">Most Picked</h1>
+    <div id="mostly-picked-list" class="grid grid-cols-1 md:grid-cols-3 gap-4 ">
+     </div>
+  </div>
+  <div id="app" class="container mx-auto p-4">
+    <h1 class="text-2xl text-blue-900 font-bold mb-4">Nearby Hotels</h1>
+    <div id="nearby-hotel-list" class="grid grid-cols-1 md:grid-cols-3 gap-4 w-[563px] h-[90px]">
+     </div>
+</div>
 
+  
 </div>
 
 <script src="./APIS.js"></script>
