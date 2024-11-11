@@ -19,8 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
 
-
-
 // console.log("APIS.js loaded successfully");
 
 // const headers = {
@@ -42,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
 //       destType = 'city'
 //   } = params;
 
-//  const hotels_API = `https://booking-com.p.rapidapi.com/v1/hotels/search?children_ages=${childrenAges}&page_number=${pageNumber}&adults_number=${adultsNumber}&children_number=${childrenNumber}&room_number=${roomNumber}&include_adjacency=true&units=metric&categories_filter_ids=class%3A%3A2%2Cclass%3A%3A4%2Cfree_cancellation%3A%3A1&checkout_date=${checkoutDate}&dest_id=${destId}&filter_by_currency=${currency}&dest_type=${destType}&checkin_date=${checkinDate}&order_by=popularity&locale=en-gb`;
+//   const hotels_API = `https://booking-com.p.rapidapi.com/v1/hotels/search?children_ages=${childrenAges}&page_number=${pageNumber}&adults_number=${adultsNumber}&children_number=${childrenNumber}&room_number=${roomNumber}&include_adjacency=true&units=metric&categories_filter_ids=class%3A%3A2%2Cclass%3A%3A4%2Cfree_cancellation%3A%3A1&checkout_date=${checkoutDate}&dest_id=${destId}&filter_by_currency=${currency}&dest_type=${destType}&checkin_date=${checkinDate}&order_by=popularity&locale=en-gb`;
 
 //   const options = { method: 'GET', headers };
 
@@ -56,9 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
 //   }
 // }
 
-
-
-// // Function to fetch hotel data and display it
+// // Main function to fetch hotel data and split it into two sections
 // async function displayHotels() {
 //   const params = {
 //       childrenAges: '5,0',
@@ -74,19 +70,20 @@ document.addEventListener('DOMContentLoaded', function() {
 //   // Fetch hotel data using the API
 //   const hotelData = await searchHotels(params);
 
-//   // If data is available, render only the top 5 hotels on the grid
 //   if (hotelData && hotelData.result) {
-//       const topSixHotels = hotelData.result.slice(0, 6); // Get only the top 5 hotels
-//       renderHotels(topSixHotels);
+//       const mostlyPickedHotels = hotelData.result.slice(0, 6); // Top 6 hotels
+//       const nearbyHotels = hotelData.result.slice(6,18);          // Remaining hotels
+
+//       renderMostlyPickedHotels(mostlyPickedHotels); // Display "Mostly Picked" section
+//       renderNearbyHotels(nearbyHotels);             // Display "Nearby Hotels" section
 //   } else {
 //       console.error('No hotel data found');
 //   }
 // }
 
-
 // // Function to fetch hotel photos
 // async function fetchHotelPhotos(hotelId) {
-//     const photos_API =  `https://booking-com.p.rapidapi.com/v1/hotels/photos?hotel_id=${hotelId}&locale=en-gb `;
+//     const photos_API = `https://booking-com.p.rapidapi.com/v1/hotels/photos?hotel_id=${hotelId}&locale=en-gb`;
 //     const options = { method: 'GET', headers };
 
 //     try {
@@ -100,15 +97,14 @@ document.addEventListener('DOMContentLoaded', function() {
 //     }
 // }
 
-// // Function to render the list of hotels on the page
-// async function renderHotels(hotels) {
-//   const hotelList = document.getElementById('hotel-list');
-//   hotelList.innerHTML = ''; // Clear any existing content
+// // Function to render the "Mostly Picked" hotels section
+// async function renderMostlyPickedHotels(hotels) {
+//   const mostlyPickedList = document.getElementById('mostly-picked-list');
+//   mostlyPickedList.innerHTML = ''; // Clear any existing content
 
 //   for (const hotel of hotels) {
 //       const { hotel_name, price_breakdown, main_photo_url, address, hotel_id } = hotel;
 
-//       // Fetch high-resolution photos for the hotel
 //       const photos = await fetchHotelPhotos(hotel_id);
 //       const highResPhoto = photos?.find(photo => photo.url_max || photo.url_1440);
 //       const photoUrl = highResPhoto?.url_1440 || highResPhoto?.url_max || main_photo_url;
@@ -126,15 +122,45 @@ document.addEventListener('DOMContentLoaded', function() {
 //           </div>
 //       `;
 
-//       hotelList.appendChild(hotelCard);
+//       mostlyPickedList.appendChild(hotelCard);
 //   }
 // }
 
+// // Function to render the "Nearby Hotels" section
+// async function renderNearbyHotels(hotels) {
+//   const nearbyHotelList = document.getElementById('nearby-hotel-list');
+//   nearbyHotelList.innerHTML = ''; // Clear any existing content
 
-// // Call the function to display hotels when the page loads
+//   for (const hotel of hotels) {
+//       const { hotel_name, price_breakdown, main_photo_url, address, hotel_id } = hotel;
+
+//       const photos = await fetchHotelPhotos(hotel_id);
+//       const highResPhoto = photos?.find(photo => photo.url_max || photo.url_1440);
+//       const photoUrl = highResPhoto?.url_1440 || highResPhoto?.url_max || main_photo_url;
+
+//       const hotelCard = document.createElement('div');
+//       hotelCard.classList.add('hotel-card', 'p-4', 'bg-white', 'shadow-md', 'rounded-lg');
+
+//       hotelCard.innerHTML = `
+//        <div class="flex flex-col h-full">
+//     <img src="${photoUrl}" alt="${hotel_name}" class="w-full h-48 object-cover rounded-t-lg">
+//     <div class="p-2 flex flex-col flex-grow">
+//       <h2 class="text-l font-bold">${hotel_name}</h2>
+//       <p class="text-gray-600">${address}</p>
+//       <p class="text-lg font-semibold">${price_breakdown?.gross_price?.formatted || 'N/A'}</p>
+//       <div class="mt-auto">
+//         <button class="w-full bg-blue-500 text-white py-2 rounded-lg">View Details</button>
+//       </div>
+//     </div>
+//   </div>
+//       `;
+
+//       nearbyHotelList.appendChild(hotelCard);
+//   }
+// }
+
+// // Call the main function to display hotels when the page loads
 // displayHotels();
-
-
 console.log("APIS.js loaded successfully");
 
 const headers = {
@@ -152,7 +178,7 @@ async function searchHotels(params) {
       checkoutDate,
       checkinDate,
       destId,
-      currency = 'AED',
+      currency = 'EUR',
       destType = 'city'
   } = params;
 
@@ -188,10 +214,10 @@ async function displayHotels() {
 
   if (hotelData && hotelData.result) {
       const mostlyPickedHotels = hotelData.result.slice(0, 6); // Top 6 hotels
-      const nearbyHotels = hotelData.result.slice(6);          // Remaining hotels
+      const nearbyHotels = hotelData.result.slice(6, 18); // Remaining hotels
 
       renderMostlyPickedHotels(mostlyPickedHotels); // Display "Mostly Picked" section
-      renderNearbyHotels(nearbyHotels);             // Display "Nearby Hotels" section
+      renderNearbyHotels(nearbyHotels); // Display "Nearby Hotels" section
   } else {
       console.error('No hotel data found');
   }
@@ -199,18 +225,18 @@ async function displayHotels() {
 
 // Function to fetch hotel photos
 async function fetchHotelPhotos(hotelId) {
-    const photos_API = `https://booking-com.p.rapidapi.com/v1/hotels/photos?hotel_id=${hotelId}&locale=en-gb`;
-    const options = { method: 'GET', headers };
+  const photos_API = `https://booking-com.p.rapidapi.com/v1/hotels/photos?hotel_id=${hotelId}&locale=en-gb`;
+  const options = { method: 'GET', headers };
 
-    try {
-        const response = await fetch(photos_API, options);
-        const result = await response.json();
-        console.log('Hotel Photos:', result);
-        return result;
-    } catch (error) {
-        console.error('Error fetching hotel photos:', error);
-        return [];
-    }
+  try {
+      const response = await fetch(photos_API, options);
+      const result = await response.json();
+      console.log('Hotel Photos:', result);
+      return result;
+  } catch (error) {
+      console.error('Error fetching hotel photos:', error);
+      return [];
+  }
 }
 
 // Function to render the "Mostly Picked" hotels section
@@ -220,6 +246,7 @@ async function renderMostlyPickedHotels(hotels) {
 
   for (const hotel of hotels) {
       const { hotel_name, price_breakdown, main_photo_url, address, hotel_id } = hotel;
+      const price = price_breakdown?.gross_price?.formatted || 'Price not available';
 
       const photos = await fetchHotelPhotos(hotel_id);
       const highResPhoto = photos?.find(photo => photo.url_max || photo.url_1440);
@@ -232,8 +259,8 @@ async function renderMostlyPickedHotels(hotels) {
           <img src="${photoUrl}" alt="${hotel_name}" class="w-full h-48 object-cover rounded-t-lg">
           <div class="p-2">
               <h2 class="text-xl font-bold">${hotel_name}</h2>
-              <p class="text-gray-600">${address}</p>
-              <p class="text-lg font-semibold">${price_breakdown?.gross_price?.formatted || 'N/A'}</p>
+              <p class="text-gray-600">${address || 'Address not available'}</p>
+              <p class="text-lg font-semibold">${price}</p>
               <button class="mt-2 w-full bg-blue-500 text-white py-2 rounded-lg">View Details</button>
           </div>
       `;
@@ -249,6 +276,7 @@ async function renderNearbyHotels(hotels) {
 
   for (const hotel of hotels) {
       const { hotel_name, price_breakdown, main_photo_url, address, hotel_id } = hotel;
+      const price = price_breakdown?.gross_price?.formatted || 'Price not available';
 
       const photos = await fetchHotelPhotos(hotel_id);
       const highResPhoto = photos?.find(photo => photo.url_max || photo.url_1440);
@@ -258,12 +286,16 @@ async function renderNearbyHotels(hotels) {
       hotelCard.classList.add('hotel-card', 'p-4', 'bg-white', 'shadow-md', 'rounded-lg');
 
       hotelCard.innerHTML = `
-          <img src="${photoUrl}" alt="${hotel_name}" class="w-full h-48 object-cover rounded-t-lg">
-          <div class="p-2">
-              <h2 class="text-xl font-bold">${hotel_name}</h2>
-              <p class="text-gray-600">${address}</p>
-              <p class="text-lg font-semibold">${price_breakdown?.gross_price?.formatted || 'N/A'}</p>
-              <button class="mt-2 w-full bg-blue-500 text-white py-2 rounded-lg">View Details</button>
+          <div class="flex flex-col h-full">
+              <img src="${photoUrl}" alt="${hotel_name}" class="w-full h-48 object-cover rounded-t-lg">
+              <div class="p-2 flex flex-col flex-grow">
+                  <h2 class="text-l font-bold">${hotel_name}</h2>
+                  <p class="text-gray-600">${address || 'Address not available'}</p>
+                  <p class="text-lg font-semibold">${price}</p>
+                  <div class="mt-auto">
+                      <button class="w-full bg-blue-500 text-white py-2 rounded-lg">View Details</button>
+                  </div>
+              </div>
           </div>
       `;
 
