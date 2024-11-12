@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
+  function navigateToCompleted() {
+    window.location.href = "completed.html";
+  }
 
 // console.log("APIS.js loaded successfully");
 
