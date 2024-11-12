@@ -1,3 +1,12 @@
+// Nav Bar menu (responsive)
+function Menu(e){
+  let list = document.querySelector('ul');
+
+  e.name === 'menu' ? (e.name = "close " , list.classList.
+      add('top-[80px]') , list.classList.add('opacity-100')
+  ) : (e.name = "menu" , list.classList.remove('top-[80px]'),
+  list.classList.remove('opacity-100'))
+};
 
 function scrollToHotels() {
   const hotelsSection = document.getElementById("app");
@@ -10,7 +19,7 @@ function scrollToNav() {
   navSection.scrollIntoView({ behavior: "smooth" });
 }
 
-// truncateText('hotel-description', 100);
+
 
 const headers = {
     'x-rapidapi-key': 'de148a4c9cmsh62e9c162f1225bdp175ee8jsn5b84fc138145',
@@ -111,6 +120,80 @@ const headers = {
         modal.classList.add('hidden');
     });
   }
+  
+
+  // async function renderMostlyPickedHotels(hotels) {
+  //   const mostlyPickedList = document.getElementById('mostly-picked-list');
+  //   mostlyPickedList.innerHTML = ''; // Clear any existing content
+  
+  //   for (const hotel of hotels) {
+  //       const { hotel_name, price_breakdown, main_photo_url, address, hotel_id } = hotel;
+  //       const price = price_breakdown?.gross_price || 'Price not available';
+  //       const currency = price_breakdown?.currency || '';
+  
+  //       const photos = await fetchHotelPhotos(hotel_id);
+  //       const highResPhoto = photos?.find(photo => photo.url_max || photo.url_1440);
+  //       const photoUrl = highResPhoto?.url_1440 || highResPhoto?.url_max || main_photo_url;
+  
+  //       const hotelCard = document.createElement('div');
+  //       hotelCard.classList.add('hotel-card', 'p-4', 'bg-white', 'shadow-md', 'rounded-lg');
+  
+  //       hotelCard.innerHTML = `
+  //           <img src="${photoUrl}" alt="${hotel_name}" class="w-full h-48 object-cover rounded-t-lg">
+  //           <div class="p-2">
+  //               <h2 class="text-xl text-blue-800 font-medium">${hotel_name}</h2>
+  //               <p class="text-gray-600">${address || 'Address not available'}</p>
+  //               <p class="text-lg text-green-500 font-medium">${price} ${currency}</p>
+  //               <button class="mt-2 w-full bg-blue-500 text-white py-2 rounded-lg">View Details</button>
+  //           </div>
+  //       `;
+  
+  //       mostlyPickedList.appendChild(hotelCard);
+  //   }
+  // }
+  
+  
+    
+  
+  
+  // // Function to render the "Nearby Hotels" section
+  // async function renderNearbyHotels(hotels) {
+  //   const nearbyHotelList = document.getElementById('nearby-hotel-list');
+  //   nearbyHotelList.innerHTML = ''; // Clear any existing content
+  
+  //   for (const hotel of hotels) {
+  //       const { hotel_name, price_breakdown, main_photo_url, address, hotel_id } = hotel;
+  //       const price = price_breakdown?.gross_price || 'Price not available';
+  //       const currency = price_breakdown?.currency || '';
+  
+  //       const photos = await fetchHotelPhotos(hotel_id);
+  //       const highResPhoto = photos?.find(photo => photo.url_max || photo.url_1440);
+  //       const photoUrl = highResPhoto?.url_1440 || highResPhoto?.url_max || main_photo_url;
+  
+  //       const hotelCard = document.createElement('div');
+  //       hotelCard.classList.add('hotel-card', 'p-4', 'bg-white', 'shadow-md', 'rounded-lg');
+  
+  //       hotelCard.innerHTML = `
+  //           <div class="flex flex-col h-full">
+  //               <img src="${photoUrl}" alt="${hotel_name}" class="w-full h-48 object-cover rounded-t-lg">
+  //               <div class="p-2 flex flex-col flex-grow">
+  //                   <h2 class="text-l text-blue-800 font-medium">${hotel_name}</h2>
+  //                   <p class="text-gray-600">${address || 'Address not available'}</p>
+  //                   <p class="text-lg text-green-500 font-medium">${price} ${currency}</p>
+  //                   <div class="mt-auto">
+  //                       <button class="w-full bg-blue-500 text-white py-2 rounded-lg">View Details</button>
+  //                   </div>
+  //               </div>
+  //           </div>
+  //       `;
+  
+  //       nearbyHotelList.appendChild(hotelCard);
+  //   }
+  // }
+  
+  
+  
+  // displayHotels();
   
   async function renderMostlyPickedHotels(hotels) {
     const mostlyPickedList = document.getElementById('mostly-picked-list');

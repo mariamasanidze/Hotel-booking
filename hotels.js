@@ -133,5 +133,4 @@ async function renderNearbyHotels(hotels) {
   }
 }
 
-// Call the main function to display hotels when the page loads
 displayHotels();
