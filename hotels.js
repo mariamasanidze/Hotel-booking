@@ -1,4 +1,3 @@
-console.log("APIS.js loaded successfully");
 
 const headers = {
   'x-rapidapi-key': 'de148a4c9cmsh62e9c162f1225bdp175ee8jsn5b84fc138145',

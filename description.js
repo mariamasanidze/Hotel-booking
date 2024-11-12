@@ -1,4 +1,17 @@
+
+function scrollToHotels() {
+  const hotelsSection = document.getElementById("app");
+  hotelsSection.scrollIntoView({ behavior: "smooth" });
+}
+
+
+function scrollToNav() {
+  const navSection = document.getElementById("nav-section");
+  navSection.scrollIntoView({ behavior: "smooth" });
+}
+
 // truncateText('hotel-description', 100);
+
 const headers = {
     'x-rapidapi-key': 'de148a4c9cmsh62e9c162f1225bdp175ee8jsn5b84fc138145',
     'x-rapidapi-host': 'booking-com.p.rapidapi.com'
@@ -116,7 +129,7 @@ const headers = {
       hotelCard.innerHTML = `
         <img src="${photoUrl}" alt="${hotel_name}" class="w-full h-48 object-cover rounded-t-lg">
         <div class="p-2">
-            <h2 class="text-xl font-bold">${hotel_name}</h2>
+            <h2 class="text-xl text-blue-900 font-medium">${hotel_name}</h2>
             <p class="text-gray-600">${address}</p>
             <p class="text-lg font-semibold">${price_breakdown?.gross_price?.formatted || 'N/A'}</p>
            <a 
@@ -159,7 +172,7 @@ const headers = {
      <div class="hotel-card flex flex-col h-full">
     <img src="${photoUrl}" alt="${hotel_name}" class="w-full h-48 object-cover rounded-t-lg">
     <div class="flex-grow p-2">
-      <h2 class="text-xl font-bold">${hotel_name}</h2>
+      <h2 class="text-xl text-blue-900 font-medium">${hotel_name}</h2>
       <p class="text-gray-600">${address}</p>
       <p class="text-lg font-semibold">${price_breakdown?.gross_price?.formatted || 'N/A'}</p>
     </div>
@@ -190,50 +203,6 @@ const headers = {
   displayHotels();
   
 
-
-  // Function to get query parameter from URL
-//   function getQueryParam(param) {
-//     const urlParams = new URLSearchParams(window.location.search);
-//     return urlParams.get(param);
-//   }
-  
-//   // Fetch hotel description and details
-//   async function fetchHotelDetails(hotelId) {
-//     const description_API = `https://booking-com.p.rapidapi.com/v1/hotels/description?hotel_id=${hotelId}&locale=en-gb`;
-//     const photos_API = `https://booking-com.p.rapidapi.com/v1/hotels/photos?hotel_id=${hotelId}&locale=en-gb`;
-  
-//     try {
-//       // Fetch description
-//       const descriptionResponse = await fetch(description_API, { method: 'GET', headers });
-//       const description = await descriptionResponse.text();
-
-//       function formatDescription(description) {
-//         const formattedDescription = description.replace(/\n/g, '<br>');
-//         return `<p>${formattedDescription}</p>`;
-//       }
-//       // Fetch photos
-//       const photosResponse = await fetch(photos_API, { method: 'GET', headers });
-//       const photos = await photosResponse.json();
-//       const photoUrl = photos?.[0]?.url_max || '';
-  
-//       // Display the data on the page
-//       document.getElementById('hotel-description').innerText = description;
-//       document.getElementById('hotel-image').src = photoUrl;
-  
-//       // Optionally add more details like name, price, etc., if needed.
-//     } catch (error) {
-//       console.error('Error fetching hotel details:', error);
-//     }
-//   }
-  
-//   // Get the hotel ID from the URL and fetch details
-//   const hotelId = getQueryParam('hotel_id');
-//   if (hotelId) {
-//     fetchHotelDetails(hotelId);
-//   } else {
-//     document.getElementById('hotel-description').innerText = 'Invalid hotel ID.';
-//   }
-  
 
 function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
@@ -280,68 +249,7 @@ function getQueryParam(param) {
   } else {
     document.getElementById('hotel-description').innerText = 'Invalid hotel ID.';
   }
-  
 
-
-//   here is the select button
- // Example API URL (replace with your actual API endpoint)
-//  const apiURL = "https://booking-com.p.rapidapi.com/v1/hotels/search?children_ages=${childrenAges}&page_number=${pageNumber}&adults_number=${adultsNumber}&children_number=${childrenNumber}&room_number=${roomNumber}&include_adjacency=true&units=metric&categories_filter_ids=class%3A%3A2%2Cclass%3A%3A4%2Cfree_cancellation%3A%3A1&checkout_date=${checkoutDate}&dest_id=${destId}&filter_by_currency=${currency}&dest_type=${destType}&checkin_date=${checkinDate}&order_by=popularity&locale=en-gb";
-
-//  // Select elements
-//  const selectLocationButton = document.getElementById('select-location');
-//  const dropdown = document.getElementById('location-dropdown');
-//  const dropdownList = document.getElementById('dropdown-list');
-
-//  // Function to fetch and display locations
-//  async function fetchLocations() {
-//      try {
-//          // Fetch locations from the API
-//          const response = await fetch(apiURL);
-//          if (!response.ok) throw new Error('Failed to fetch data');
-//          const data = await response.json();
-
-//          // Assuming the API returns a list of locations under a 'locations' field
-//          const locations = data.locations;
-
-//          // Clear previous dropdown content
-//          dropdownList.innerHTML = '';
-
-//          // Populate dropdown with locations
-//          locations.forEach(location => {
-//              const li = document.createElement('li');
-//              li.textContent = location.name; // Adjust based on your API's location data format
-//              li.className = "px-4 py-2 hover:bg-gray-100 cursor-pointer";
-//              li.addEventListener('click', () => {
-//                  alert(`You selected: ${location.name}`);
-//                  dropdown.classList.add('hidden');
-//              });
-//              dropdownList.appendChild(li);
-//          });
-
-//          // Show dropdown
-//          dropdown.classList.remove('hidden');
-//      } catch (error) {
-//          console.error('Error fetching locations:', error);
-//      }
-//  }
-
-//  // Event listener to show dropdown on button click
-//  selectLocationButton.addEventListener('click', () => {
-//      // Toggle dropdown visibility
-//      if (dropdown.classList.contains('hidden')) {
-//          fetchLocations();
-//      } else {
-//          dropdown.classList.add('hidden');
-//      }
-//  });
-
-//  // Optional: Close the dropdown if clicked outside
-//  document.addEventListener('click', (event) => {
-//      if (!event.target.closest('#select-location') && !event.target.closest('#location-dropdown')) {
-//          dropdown.classList.add('hidden');
-//      }
-//  });
-
- function goToCheckout() {
-  window.location.href = "checkout.html";
+ function goToBooking() {
+  window.location.href = "Booking.html";
 }

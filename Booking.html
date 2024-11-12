@@ -10,17 +10,25 @@
     <!-- Include Flatpickr CSS and JS used it for check in and out -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <title>Document</title>
+    <title>Booking Page</title>
 
 
 
  </head>
-<body class="bg-gray-100 font-sans min-h-screen flex flex-col items-center">
-    <div class="w-full max-w-4xl bg-white shadow-lg rounded-lg mt-10 p-6">
-        <!-- Step Indicator -->
-         <div class="flex justify-center mb-6">
-           
-        </div>
+<body>
+    <div class="max-w-[1260px] mx-auto px-4">
+
+        <nav class="p-5 bg-white shadow relative">
+            <div class="flex justify-center items-center">
+              <h1 class="cursor-pointer">
+                <a href="main.html" class="text-3xl font-bold">
+                    <span class="text-blue-500">Lanka</span><span>Stay.</span>
+                </a>
+              </h1>
+            </div>
+        </nav>
+    <div class="w-full max-w-4xl bg-white shadow-lg rounded-lg mt-10 p-6 mx-auto">
+      
         <!-- Booking Info -->
         <h2 class="text-2xl text-blue-900 font-bold text-center mb-4">Booking Information</h2>
         <p class="text-gray-500 text-center mb-6">Please fill up the blank fields below</p>
@@ -31,6 +39,18 @@
                 <h3 id="property-name" class="text-xl font-bold"></h3>
                 <p id="property-location" class="text-gray-500"></p>
                 <!-- <p class="text-lg mt-4">You will pay <span id="total-cost"></span> for 2 Days</p> -->
+                <div class="bg-white flex items-center px-4 py-2 rounded-lg shadow-md text-gray-700 font-medium hover:bg-gray-100 w-full mt-10 sm:w-auto">
+                    <ion-icon name="person-outline" class="mr-2 text-xl"></ion-icon>
+                    Person
+                    <select id="personCount" class="ml-2 bg-transparent outline-none">
+                      <option value="1">1</option>
+                      <option value="2" selected>2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                    </select>
+                  </div>
                 <div class="relative w-full mt-10 sm:w-auto">
                     <ion-icon name="calendar-outline" class="absolute left-4 top-5 transform -translate-y-1/2 text-xl text-gray-700"></ion-icon>
                     <input id="date-range" type="text" placeholder="Check-In - Check-Out" class="bg-white pl-12 pr-4 py-2 rounded-lg shadow-md text-gray-700 font-medium hover:bg-gray-100 w-full sm:w-auto cursor-pointer appearance-none placeholder-gray-700" />
@@ -47,11 +67,11 @@
             <button 
             onclick="navigateToHome()" 
             class=" w-48 h-12 bg-gray-400 hover:bg-gray-500 text-white py-3 rounded-lg">
-            Cancel Now
+            Cancel 
         </button>
         </div>
     </div>
-
+</div>
 
     <script src="checkout.js"></script>
     <script src="./description.js"></script>

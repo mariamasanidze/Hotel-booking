@@ -7,22 +7,21 @@
     <link rel="stylesheet" href="./style.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <!-- Include Flatpickr CSS and JS used it for check in and out -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
-    <title>Hotel Booking</title>
+<link href="https://fonts.googleapis.com/css2?family=Faculty+Glyphic:wght@400;500&display=swap" rel="stylesheet">
+    <title>LankaStay.com</title>
 </head>
 <body class="bg-gray-100">
-
-<!-- Outer Wrapper with max-width and centered alignment -->
 <div class="max-w-[1260px] mx-auto px-4">
 
   <!-- Navbar Section -->
-  <nav class="p-5 bg-white shadow md:flex md:items-center md:justify-between relative">
+  <nav id="nav-section" class="p-5 bg-white shadow md:flex md:items-center md:justify-between relative">
     <div class="flex justify-between items-center">
       <h1 class="cursor-pointer">
-        <span class="text-3xl text-blue-500 font-bold">Lanka</span><span class="text-3xl font-bold">Stay.</span>
+        <a href="main.html" class="text-3xl font-bold">
+            <span class="text-blue-500">Lanka</span><span>Stay.</span>
+        </a>
       </h1>
       <span class="text-3xl cursor-pointer mx-2 md:hidden block">
         <ion-icon name="menu-outline" onclick="Menu(this)"></ion-icon>
@@ -50,7 +49,7 @@
     </ul>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- baner Section -->
   <section class="py-2 items-center">
     <div class="flex flex-col lg:flex-row justify-around items-center mt-12">
       <div class="flex flex-col w-full lg:w-1/2 gap-6 lg:gap-11 text-center lg:text-left">
@@ -63,10 +62,11 @@
           holiday with family. Time to make another <br>
           memorable moments.
         </h2>
-        <button class="bg-blue-800 hover:bg-blue-700 text-white font-bold w-40 h-10 rounded mx-auto lg:mx-0">
-          <span class="text">Show More</span>
-        </button>
-        
+        <button 
+        class="bg-blue-800 hover:bg-blue-700 text-white font-bold w-48 h-10 rounded mx-auto lg:mx-0" 
+        onclick="scrollToHotels()">
+        <span class="text">Show Hotels</span>
+      </button>
       </div> 
       <div class="w-full lg:w-1/2 flex justify-center lg:justify-end mt-6 lg:mt-0">
         <img src="./images/main.svg" alt="Main Image" class="max-w-full h-auto mt-20"/>
@@ -78,8 +78,7 @@
 
 
 
-<!-- 
-  Stats Section  -->
+<!-- Stats Section  -->
    <section class="py-4">
     <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-10 lg:gap-20">
       <div class="flex flex-col items-center text-center">
@@ -136,13 +135,15 @@
     </div>
   </section>
   
+<!-- connected to js with these ids  -->
   <div id="app" class="container mx-auto mt-28 p-4">
     <h1 class="text-2xl text-blue-900 font-bold mb-4">Most Picked</h1>
-    <div id="mostly-picked-list" class="grid grid-cols-1 md:grid-cols-3 gap-4 ">
-     </div>
+    <div id="mostly-picked-list" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    </div>
   </div>
+  
+
   <div id="app" class="container mx-auto mt-28 p-4">
-    <!-- <h1 class="text-2xl text-blue-900 font-bold mb-4">Nearby Hotels</h1> -->
     <div id="nearby-hotel-list" class="grid grid-cols-1 md:grid-cols-4 gap-4  ">
      </div>
 </div>
@@ -157,11 +158,11 @@
 
 
 <div class="flex flex-col md:flex-row items-center justify-between mt-28 bg-white px-8 py-4 shadow-md">
-  
   <div class="flex flex-col text-center md:text-left">
-    <h1 class="cursor-pointer mb-4">
+    <h1 class="cursor-pointer mb-4" onclick="scrollToNav()">
       <span class="text-3xl text-blue-500 font-bold">Lanka</span><span class="text-3xl font-bold">Stay.</span>
     </h1>
+    
     <p class="text-gray-500">
       We kaboom your beauty holiday <br class="hidden md:inline">
       instantly and memorable.
@@ -172,7 +173,6 @@
     <h4 class="text-black font-medium">Become hotel Owner</h4>
     <button class="bg-blue-800 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded mt-2">Register Now</button>
   </div>
-
 </div>
   
 </div>
