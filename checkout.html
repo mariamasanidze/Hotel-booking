@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./style.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <!-- Include Flatpickr CSS and JS used it for check in and out -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <title>Document</title>
+
+
+
+ </head>
+<body class="bg-gray-100 font-sans min-h-screen flex flex-col items-center">
+    <div class="w-full max-w-4xl bg-white shadow-lg rounded-lg mt-10 p-6">
+        <!-- Step Indicator -->
+         <div class="flex justify-center mb-6">
+           
+        </div>
+        <!-- Booking Info -->
+        <h2 class="text-2xl text-blue-900 font-bold text-center mb-4">Booking Information</h2>
+        <p class="text-gray-500 text-center mb-6">Please fill up the blank fields below</p>
+        <div class="flex gap-32 mt-16 ml-10"> 
+            <!-- <img id="property-image" class="w-64 h-48 object-cover rounded-lg" alt="Property"> -->
+             <img id="hotel-image" src="" alt="Hotel" class="w-64 h-48  object-cover rounded-lg shadow-md">
+            <div class="">
+                <h3 id="property-name" class="text-xl font-bold"></h3>
+                <p id="property-location" class="text-gray-500"></p>
+                <!-- <p class="text-lg mt-4">You will pay <span id="total-cost"></span> for 2 Days</p> -->
+                <div class="relative w-full mt-10 sm:w-auto">
+                    <ion-icon name="calendar-outline" class="absolute left-4 top-5 transform -translate-y-1/2 text-xl text-gray-700"></ion-icon>
+                    <input id="date-range" type="text" placeholder="Check-In - Check-Out" class="bg-white pl-12 pr-4 py-2 rounded-lg shadow-md text-gray-700 font-medium hover:bg-gray-100 w-full sm:w-auto cursor-pointer appearance-none placeholder-gray-700" />
+                  </div>
+            </div>
+         </div> 
+        <!-- Booking Actions -->
+         <div class="mt-20 ml-48 ">
+            <button 
+                onclick="navigateToPayment()" 
+                class=" w-48 h-12 bg-blue-800  hover:bg-blue-700 text-white py-3 rounded-lg">
+                Book Now!
+            </button>
+            <button 
+            onclick="navigateToHome()" 
+            class=" w-48 h-12 bg-gray-400 hover:bg-gray-500 text-white py-3 rounded-lg">
+            Cancel Now
+        </button>
+        </div>
+    </div>
+
+
+    <script src="checkout.js"></script>
+    <script src="./description.js"></script>
+</body>
+</html>  
+
+

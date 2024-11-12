@@ -285,59 +285,63 @@ function getQueryParam(param) {
 
 //   here is the select button
  // Example API URL (replace with your actual API endpoint)
- const apiURL = "https://booking-com.p.rapidapi.com/v1/hotels/search?children_ages=${childrenAges}&page_number=${pageNumber}&adults_number=${adultsNumber}&children_number=${childrenNumber}&room_number=${roomNumber}&include_adjacency=true&units=metric&categories_filter_ids=class%3A%3A2%2Cclass%3A%3A4%2Cfree_cancellation%3A%3A1&checkout_date=${checkoutDate}&dest_id=${destId}&filter_by_currency=${currency}&dest_type=${destType}&checkin_date=${checkinDate}&order_by=popularity&locale=en-gb";
+//  const apiURL = "https://booking-com.p.rapidapi.com/v1/hotels/search?children_ages=${childrenAges}&page_number=${pageNumber}&adults_number=${adultsNumber}&children_number=${childrenNumber}&room_number=${roomNumber}&include_adjacency=true&units=metric&categories_filter_ids=class%3A%3A2%2Cclass%3A%3A4%2Cfree_cancellation%3A%3A1&checkout_date=${checkoutDate}&dest_id=${destId}&filter_by_currency=${currency}&dest_type=${destType}&checkin_date=${checkinDate}&order_by=popularity&locale=en-gb";
 
- // Select elements
- const selectLocationButton = document.getElementById('select-location');
- const dropdown = document.getElementById('location-dropdown');
- const dropdownList = document.getElementById('dropdown-list');
+//  // Select elements
+//  const selectLocationButton = document.getElementById('select-location');
+//  const dropdown = document.getElementById('location-dropdown');
+//  const dropdownList = document.getElementById('dropdown-list');
 
- // Function to fetch and display locations
- async function fetchLocations() {
-     try {
-         // Fetch locations from the API
-         const response = await fetch(apiURL);
-         if (!response.ok) throw new Error('Failed to fetch data');
-         const data = await response.json();
+//  // Function to fetch and display locations
+//  async function fetchLocations() {
+//      try {
+//          // Fetch locations from the API
+//          const response = await fetch(apiURL);
+//          if (!response.ok) throw new Error('Failed to fetch data');
+//          const data = await response.json();
 
-         // Assuming the API returns a list of locations under a 'locations' field
-         const locations = data.locations;
+//          // Assuming the API returns a list of locations under a 'locations' field
+//          const locations = data.locations;
 
-         // Clear previous dropdown content
-         dropdownList.innerHTML = '';
+//          // Clear previous dropdown content
+//          dropdownList.innerHTML = '';
 
-         // Populate dropdown with locations
-         locations.forEach(location => {
-             const li = document.createElement('li');
-             li.textContent = location.name; // Adjust based on your API's location data format
-             li.className = "px-4 py-2 hover:bg-gray-100 cursor-pointer";
-             li.addEventListener('click', () => {
-                 alert(`You selected: ${location.name}`);
-                 dropdown.classList.add('hidden');
-             });
-             dropdownList.appendChild(li);
-         });
+//          // Populate dropdown with locations
+//          locations.forEach(location => {
+//              const li = document.createElement('li');
+//              li.textContent = location.name; // Adjust based on your API's location data format
+//              li.className = "px-4 py-2 hover:bg-gray-100 cursor-pointer";
+//              li.addEventListener('click', () => {
+//                  alert(`You selected: ${location.name}`);
+//                  dropdown.classList.add('hidden');
+//              });
+//              dropdownList.appendChild(li);
+//          });
 
-         // Show dropdown
-         dropdown.classList.remove('hidden');
-     } catch (error) {
-         console.error('Error fetching locations:', error);
-     }
- }
+//          // Show dropdown
+//          dropdown.classList.remove('hidden');
+//      } catch (error) {
+//          console.error('Error fetching locations:', error);
+//      }
+//  }
 
- // Event listener to show dropdown on button click
- selectLocationButton.addEventListener('click', () => {
-     // Toggle dropdown visibility
-     if (dropdown.classList.contains('hidden')) {
-         fetchLocations();
-     } else {
-         dropdown.classList.add('hidden');
-     }
- });
+//  // Event listener to show dropdown on button click
+//  selectLocationButton.addEventListener('click', () => {
+//      // Toggle dropdown visibility
+//      if (dropdown.classList.contains('hidden')) {
+//          fetchLocations();
+//      } else {
+//          dropdown.classList.add('hidden');
+//      }
+//  });
 
- // Optional: Close the dropdown if clicked outside
- document.addEventListener('click', (event) => {
-     if (!event.target.closest('#select-location') && !event.target.closest('#location-dropdown')) {
-         dropdown.classList.add('hidden');
-     }
- });
+//  // Optional: Close the dropdown if clicked outside
+//  document.addEventListener('click', (event) => {
+//      if (!event.target.closest('#select-location') && !event.target.closest('#location-dropdown')) {
+//          dropdown.classList.add('hidden');
+//      }
+//  });
+
+ function goToCheckout() {
+  window.location.href = "checkout.html";
+}
