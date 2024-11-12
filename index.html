@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./style.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<link href="https://fonts.googleapis.com/css2?family=Faculty+Glyphic:wght@400;500&display=swap" rel="stylesheet">
+    <title>LankaStay.com</title>
+</head>
+<body class="bg-gray-100">
+<div class="max-w-[1260px] mx-auto px-4">
+
+  <!-- Navbar Section -->
+  <nav id="nav-section" class="p-5 bg-white shadow md:flex md:items-center md:justify-between relative">
+    <div class="flex justify-between items-center">
+      <h1 class="cursor-pointer">
+        <a href="main.html" class="text-3xl font-bold">
+            <span class="text-blue-500">Lanka</span><span>Stay.</span>
+        </a>
+      </h1>
+      <span class="text-3xl cursor-pointer mx-2 md:hidden block">
+        <ion-icon name="menu-outline" onclick="Menu(this)"></ion-icon>
+      </span>
+    </div>
+    <ul class="md:flex md:items-center z-[10] md:z-auto md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all duration-300 lg:transition-none text-center text-black z-10">
+      <li class="mx-4 my-6 md:my-0">
+        <a href="./main.html" class="text-xl hover:text-cyan-500 duration-500">Home</a>
+      </li>
+      <li class="mx-4 my-6 md:my-0">
+        <a href="./hotels.html" class="text-xl hover:text-cyan-500 duration-500">Hotels</a>
+      </li>
+      <li class="mx-4 my-6 md:my-0">
+        <a href="#" class="text-xl hover:text-cyan-500 duration-500">Rooms</a>
+      </li>
+      <li class="mx-4 my-6 md:my-0">
+        <a href="./about.html" class="text-xl hover:text-cyan-500 duration-500">About</a>
+      </li>
+      <li class="mx-4 my-6 md:my-0">
+        <a href="#" class="text-xl hover:text-cyan-500 duration-500">Contact</a>
+      </li>
+      <button class="bg-blue-800 hover:bg-blue-700 text-white font-bold w-20 h-8 rounded mx-auto lg:mx-0">
+        Login
+      </button>
+    </ul>
+  </nav>
+
+  <!-- baner Section -->
+  <section class="py-2 items-center">
+    <div class="flex flex-col lg:flex-row justify-around items-center mt-12">
+      <div class="flex flex-col w-full lg:w-1/2 gap-6 lg:gap-11 text-center lg:text-left">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl text-blue-950 font-bold">
+          Forget Busy Work, <br>
+          Start Next Vacation
+        </h1>
+        <h2 class="text-gray-400 text-base sm:text-lg lg:text-xl">
+          We provide what you need to enjoy your <br>
+          holiday with family. Time to make another <br>
+          memorable moments.
+        </h2>
+        <button 
+        class="bg-blue-800 hover:bg-blue-700 text-white font-bold w-48 h-10 rounded mx-auto lg:mx-0" 
+        onclick="scrollToHotels()">
+        <span class="text">Show Hotels</span>
+      </button>
+      </div> 
+      <div class="w-full lg:w-1/2 flex justify-center lg:justify-end mt-6 lg:mt-0">
+        <img src="./images/main.svg" alt="Main Image" class="max-w-full h-auto mt-20"/>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+<!-- Stats Section  -->
+   <section class="py-4">
+    <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-10 lg:gap-20">
+      <div class="flex flex-col items-center text-center">
+        <ion-icon class="w-8 h-10 mb-2" name="people-outline"></ion-icon>
+        <p class="text-l font-bold text-blue-950">2500 <span class="text-gray-400 font-normal">Users</span></p>
+      </div>
+      <div class="flex flex-col items-center text-center">
+        <ion-icon class="w-8 h-10 mb-2" name="camera-outline"></ion-icon>
+        <p class="text-l font-bold text-blue-950">200 <span class="text-gray-400 font-normal">treasure</span></p>
+      </div>
+      <div class="flex flex-col items-center text-center">
+        <ion-icon class="w-8 h-10 mb-2" name="location-outline"></ion-icon>
+        <p class="text-l font-bold text-blue-950">100 <span class="text-gray-400 font-normal">cities</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Responsive Search Section -->
+  <section class="py-4 mt-24">
+    <div class="justify-around bg-blue-100 p-8 rounded-lg w-full flex flex-col sm:flex-row items-center gap-4 sm:gap-2 lg:gap-4 shadow-lg">
+      
+      <div class="relative w-full sm:w-auto">
+        <ion-icon name="calendar-outline" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-xl text-gray-700"></ion-icon>
+        <input id="date-range" type="text" placeholder="Check-In - Check-Out" class="bg-white pl-12 pr-4 py-2 rounded-lg shadow-md text-gray-700 font-medium hover:bg-gray-100 w-full sm:w-auto cursor-pointer appearance-none placeholder-gray-700" />
+      </div>
+       <!-- Number of People Selector -->
+    <div class="bg-white flex items-center px-4 py-2 rounded-lg shadow-md text-gray-700 font-medium hover:bg-gray-100 w-full sm:w-auto">
+        <ion-icon name="person-outline" class="mr-2 text-xl"></ion-icon>
+        Person
+        <select id="personCount" class="ml-2 bg-transparent outline-none">
+          <option value="1">1</option>
+          <option value="2" selected>2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+      </div>
+
+      <!-- Location Selector -->
+      <button class="bg-white flex items-center px-4 py-2 rounded-lg shadow-md text-gray-700 font-medium hover:bg-gray-100 w-full sm:w-auto">
+        <ion-icon name="location-outline" class="mr-2 text-xl"></ion-icon>
+        Select Location
+      </button>
+
+      <div id="location-dropdown" 
+      class="absolute mt-2 w-64 bg-white shadow-md rounded-lg hidden">
+     <ul id="dropdown-list" class="divide-y divide-gray-200"></ul>
+ </div>
+      <!-- Search Button -->
+      <button id="search-button" class="bg-blue-600 text-white px-6 py-2 rounded-lg shadow-md font-medium hover:bg-blue-500 w-full sm:w-auto">
+        Search
+    </button>    
+    </div>
+  </section>
+  
+<!-- connected to js with these ids  -->
+  <div id="app" class="container mx-auto mt-28 p-4">
+    <h1 class="text-2xl text-blue-900 font-bold mb-4">Most Picked</h1>
+    <div id="mostly-picked-list" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    </div>
+  </div>
+  
+
+  <div id="app" class="container mx-auto mt-28 p-4">
+    <div id="nearby-hotel-list" class="grid grid-cols-1 md:grid-cols-4 gap-4  ">
+     </div>
+</div>
+
+<div id="description-modal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+  <div class="modal-content p-4 bg-white rounded-lg max-w-md mx-auto relative">
+    <span class="close-btn absolute top-2 right-2 text-gray-500 cursor-pointer">X</span>
+    <p class="description-text text-gray-800"></p>
+  </div>
+</div>
+
+
+
+<div class="flex flex-col md:flex-row items-center justify-between mt-28 bg-white px-8 py-4 shadow-md">
+  <div class="flex flex-col text-center md:text-left">
+    <h1 class="cursor-pointer mb-4" onclick="scrollToNav()">
+      <span class="text-3xl text-blue-500 font-bold">Lanka</span><span class="text-3xl font-bold">Stay.</span>
+    </h1>
+    
+    <p class="text-gray-500">
+      We kaboom your beauty holiday <br class="hidden md:inline">
+      instantly and memorable.
+    </p>
+  </div>
+
+  <div class="flex flex-col items-center md:items-start mt-4 md:mt-0  md:mr-32 gap-2">
+    <h4 class="text-black font-medium">Become hotel Owner</h4>
+    <button class="bg-blue-800 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded mt-2">Register Now</button>
+  </div>
+</div>
+  
+</div>
+<script src="./description.js"></script>
+</body>
+</html>
+
